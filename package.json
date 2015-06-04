@@ -1,0 +1,21 @@
+{
+  "name": "api-perf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brion25/api-perf.git"
+  },
+  "author": "JC Gomez, Ulises Garcia",
+  "bugs": {
+    "url": "https://github.com/brion25/api-perf/issues"
+  },
+  "homepage": "https://github.com/brion25/api-perf#readme",
+  "dependencies": {
+    "browser-perf": "^1.2.8"
+  }
+}
