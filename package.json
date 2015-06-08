@@ -16,9 +16,9 @@
   },
   "homepage": "https://github.com/brion25/api-perf#readme",
   "dependencies": {
-    "request": "^2.57.0"
+    "yargs": "^3.10.0"
   },
   "bin": {
-    "api-perf": "./index.js"
+    "aperf": "./index.js"
   }
 }
