@@ -5,7 +5,7 @@ A module to test the performance of an API or any URL
 Installation
 =======
 
-    $ npm install aperf
+    $ npm install api-perf
 
 Examples
 =======
