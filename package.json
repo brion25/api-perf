@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/brion25/api-perf#readme",
   "dependencies": {
+    "jsonfile": "^2.0.1",
     "yargs": "^3.10.0"
   },
   "bin": {
