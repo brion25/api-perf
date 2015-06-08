@@ -6,7 +6,7 @@ function Implementer(config){
 
   if(config.proxy){
     var proxyFormatted = formatProxy(config.proxy);
-    options:{
+    options = {
       host : proxyFormatted.proxy,
       port : proxyFormatted.port,
       headers : {
@@ -15,10 +15,9 @@ function Implementer(config){
     }
   }
 
-  options = {
-    path : config.url,
-    method:config.method
-  }
+  options.path = config.url;
+    options.method = config.method
+  
 
   for(var i = 0;i<iterations;i++){
     new Requester(options,config.c);

@@ -1,15 +1,16 @@
-var args = require(yargs).argv,
+var args = require('yargs').argv,
     Implementer = require('./implementer'),
     readConfig = require('./../lib/readConfig');
 
 function ApiPerf(){
+    
   var defaults = {
         method:'GET',
-        c:100,
-        i:100
+        c:10,
+        i:10
       },
       config = {};
-  if(!config.url){
+  if(!args.url){
     config = readConfig(args);
   }else{
     if(args.url) config.url = args.url;
@@ -20,7 +21,8 @@ function ApiPerf(){
     if(args.method) config.method = args.method
     else config.method = defaults.method
   }
-
+    if(args.proxy) config.proxy = args.proxy;
+    
   new Implementer(config);
 }
 
