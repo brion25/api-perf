@@ -51,7 +51,7 @@ With **--method** you can modify the concurrency of the call, by default the val
 -------
 If you are behind a corporate proxy, you can use the command **--proxy** to add it
 
-    $aperf --url=http://www.google.com --proxy=http://user:password@proxy:port
+    $aperf --url=http://www.google.com --proxy=proxy:port
 
 Notes
 =======
@@ -63,5 +63,5 @@ You can create a config file just adding the commands as arguments of the object
 	    method:'GET',
 	    c:100,
 	    i:100,
-	    proxy:'http://user:pass@proxy:port'
+	    proxy:'proxy:port'
     }
