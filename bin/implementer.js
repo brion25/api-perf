@@ -1,6 +1,6 @@
 var Requester = require('./../lib/requester'),
     Persistance = require('./../lib/persistanceData'),
-    writer = require('./../lib/writeFile');
+    writer = require('./../lib/writeReport');
 
 function Implementer(config){
 
@@ -51,7 +51,8 @@ function Implementer(config){
     }
 
     this.writeReport = function(){
-      writer(persistance.getResults(),'./test.json');
+      //console.log(persistance.getResults());
+      writer(persistance.getResults());
     }
 
 
