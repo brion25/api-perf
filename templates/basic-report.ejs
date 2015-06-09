@@ -1,0 +1,13 @@
+<doctype html>
+<html>
+  <head>
+    <title><%= new Date().toISOString().split('T')[0] %> - Report</title>
+  </head>
+  <body>
+    <% for(var i=0;i<iterations.length;i++){ %>
+      <p>
+        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date) %></small></h2>
+      </p>
+    <% } %>
+  </body>
+</html>
