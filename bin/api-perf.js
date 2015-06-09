@@ -16,7 +16,7 @@ function ApiPerf(){
     if(args.url) config.url = args.url;
     if(args.c) config.c = args.c;
     else config.c = defaults.c;
-    if(args.i) config.r = args.i;
+    if(args.i) config.i = args.i;
     else config.i = defaults.i;
     if(args.method) config.method = args.method
     else config.method = defaults.method
