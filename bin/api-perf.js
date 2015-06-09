@@ -3,7 +3,7 @@ var args = require('yargs').argv,
     readConfig = require('./../lib/readConfig');
 
 function ApiPerf(){
-    
+
   var defaults = {
         method:'GET',
         c:10,
@@ -22,8 +22,9 @@ function ApiPerf(){
     else config.method = defaults.method
   }
     if(args.proxy) config.proxy = args.proxy;
-    
-  new Implementer(config);
+
+  var implementer = Implementer(config).getInstance();
+  implementer.doFirst();
 }
 
 module.exports = ApiPerf;
