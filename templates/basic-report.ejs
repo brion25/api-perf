@@ -4,12 +4,12 @@
     <title><%= new Date().toISOString().split('T')[0] %> - Report</title>
   </head>
   <body>
-    <div>
-      <div>
+    <div id="main-info">
+      <div id="url-info">
         <strong><%= method.toUpperCase() %> </strong>
         <span> http://<%= url %> </span>
       </div>
-      <div>
+      <div id="other-important-info">
         <p>
           <strong>Iterations: </strong>
           <span><%= i %></span>
@@ -20,12 +20,13 @@
       </p>
       </div>
     </div>
+    <div id="iterations">
     <% for(var i=0;i<iterations.length;i++){ %>
-      <div>
+      <div class="iteration">
         <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date) %></small></h2>
-
+        <div id="concurrences">
         <% iterations[i].results.forEach(function(result){ %>
-          <p>
+          <p class="concurrence">
             <h3> Concurrence No. <%= result.concurrence %></h3>
             <table>
               <tr>
@@ -37,8 +38,9 @@
             </table>
           </p>
         <% }) %>
-
+        </div>
       </div>
     <% } %>
+    </div>
   </body>
 </html>
