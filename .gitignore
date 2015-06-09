@@ -1,6 +1,7 @@
 # Other
 .bowerrc
 example
+api-perf-report
 
 # Coverage directory used by tools like istanbul
 coverage

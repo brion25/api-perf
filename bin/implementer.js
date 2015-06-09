@@ -37,6 +37,7 @@ function Implementer(config){
     this.doFirst = function(){
       persistance = new Persistance();
       persistance.setMaxIteration(config.i);
+      persistance.setGeneralInfo(config);
       new Requester(options,config.c,instance,persistance);
     }
 

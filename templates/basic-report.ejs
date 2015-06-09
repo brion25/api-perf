@@ -4,10 +4,41 @@
     <title><%= new Date().toISOString().split('T')[0] %> - Report</title>
   </head>
   <body>
-    <% for(var i=0;i<iterations.length;i++){ %>
+    <div>
+      <div>
+        <strong><%= method.toUpperCase() %> </strong>
+        <span> http://<%= url %> </span>
+      </div>
+      <div>
+        <p>
+          <strong>Iterations: </strong>
+          <span><%= i %></span>
+        </p>
       <p>
-        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date) %></small></h2>
+        <strong>Concurrence: </strong>
+        <span><%= c %></span>
       </p>
+      </div>
+    </div>
+    <% for(var i=0;i<iterations.length;i++){ %>
+      <div>
+        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date) %></small></h2>
+
+        <% iterations[i].results.forEach(function(result){ %>
+          <p>
+            <h3> Concurrence No. <%= result.concurrence %></h3>
+            <table>
+              <tr>
+                <th>Time taken to complete the request</th><th>Waiting TTFB</th>
+              </tr>
+              <tr>
+                <td><%= result.data.downloaded %> ms</td><td><%= result.data.firstbyte %> ms</td>
+              </tr>
+            </table>
+          </p>
+        <% }) %>
+
+      </div>
     <% } %>
   </body>
 </html>
