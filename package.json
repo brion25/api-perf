@@ -16,9 +16,12 @@
   },
   "homepage": "https://github.com/brion25/api-perf#readme",
   "dependencies": {
-    "request": "^2.57.0"
+    "ejs": "^2.3.1",
+    "jsonfile": "^2.0.1",
+    "minimist": "^1.1.1",
+    "progress": "^1.1.8"
   },
   "bin": {
-    "api-perf": "./index.js"
+    "aperf": "./index.js"
   }
 }

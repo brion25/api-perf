@@ -1,6 +1,8 @@
 # Other
 .bowerrc
 example
+api-perf-report
+aperf-report
 
 # Coverage directory used by tools like istanbul
 coverage
@@ -16,3 +18,10 @@ build/Release
 
 # Dependency directory
 node_modules
+
+# Test files
+./api-perf-report
+./aperf-report
+./*Report.json
+./*report.html
+test.json
