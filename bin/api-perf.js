@@ -3,6 +3,7 @@ var args = require('minimist')(process.argv.slice(2)),
     readConfig = require('./../lib/readConfig');
 
 function ApiPerf(){
+  console.log('working...');
   var defaults = {
         method:'GET',
         c:10,
@@ -12,7 +13,7 @@ function ApiPerf(){
   if(!args.url){
     config = readConfig(args);
   }else{
-    if(args.url) config.url = args.url;
+    if(args.url) config.url = args.url.replace(/%28/g,'(').replace(/%29/g,')');
     if(args.c) config.c = args.c;
     else config.c = defaults.c;
     if(args.i) config.i = args.i;

@@ -24,7 +24,8 @@
       </p>
       </div>
     </div>
-    <div id="iterations">
+    <button id="show-iterations-btn" onclick="showHide('iterations','show-iterations-btn','Iterations')">Show Iterations</button>
+    <div id="iterations" style="display:none;">
     <% for(var i=0;i<iterations.length;i++){ %>
       <div class="iteration">
         <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toUTCString() %></small></h2>
@@ -36,7 +37,7 @@
             <td><%= iterations[i].maxTimeRequest %>ms</td><td><%= iterations[i].minTimeRequest %>ms</td><td><%= iterations[i].avgTimeRequest %>ms</td>
           </tr>
         </table>
-        <button id="button-concurrence-iteration-<%= i %>" onclick="showHideConcurrences('concurrences-for-<%= i %>','button-concurrence-iteration-<%= i %>')">Show All the concurrences</button>
+        <button id="button-concurrence-iteration-<%= i %>" onclick="showHide('concurrences-for-<%= i %>','button-concurrence-iteration-<%= i %>','All the concurrences')">Show All the concurrences</button>
         <div id="concurrences-for-<%= i %>" style="display:none;">
         <% iterations[i].results.forEach(function(result){ %>
           <p class="concurrence">
@@ -56,15 +57,15 @@
     <% } %>
     </div>
     <script >
-      function showHideConcurrences(idDiv, idButton){
+      function showHide(idDiv, idButton, msg){
         var div = document.getElementById(idDiv),
             button = document.getElementById(idButton).firstChild;
         if(div.style.display === 'none'){
           div.style.display = 'inherit';
-          button.data='Hide All the concurrences';
+          button.data='Hide '+msg;
         }else{
           div.style.display = 'none';
-          button.data='Show All the concurrences';
+          button.data='Show '+msg;
         }
       }
     </script>
