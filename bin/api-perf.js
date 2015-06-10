@@ -21,7 +21,10 @@ function ApiPerf(){
     if(args.method) config.method = args.method
     else config.method = defaults.method
   }
-    if(args.proxy) config.proxy = args.proxy;
+  if(args.proxy) config.proxy = args.proxy;
+
+  if(config.url.indexOf('//') < 0 ) config.url="http://"+config.url;
+  if(config.url.substring(config.url.indexOf('//') + 2).indexOf('/') < 0) config.url = config.url + '/';
 
   var implementer = Implementer(config).getInstance();
   implementer.doFirst();

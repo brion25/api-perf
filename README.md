@@ -14,6 +14,8 @@ Using the CLI
 -------
     $ aperf --url=http://www.google.com
 
+If your URL has some parentheses like: 'http://www.url.com/example()?query=something', replace the parentheses for its UTF-8 version: 'http://www.url.com/example%28%29?query=something'
+
 Using a config.js
 -------
 **command**
