@@ -1,9 +1,3 @@
-<doctype html>
-<html>
-  <head>
-    <title><%= new Date().toISOString().split('T')[0] %> - Report</title>
-  </head>
-  <body>
     <div id="main-info">
       <div id="url-info">
         <strong><%= method.toUpperCase() %> </strong>
@@ -18,22 +12,41 @@
         <strong>Concurrence: </strong>
         <span><%= c %></span>
       </p>
+      <p>
+        <table>
+          <tr>
+            <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
+          </tr>
+          <tr>
+            <td><%= maxTimeRequest %>ms</td><td><%= minTimeRequest %>ms</td><td><%= avgTimeRequest %>ms</td>
+          </tr>
+        </table>
+      </p>
       </div>
     </div>
     <div id="iterations">
     <% for(var i=0;i<iterations.length;i++){ %>
       <div class="iteration">
-        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date) %></small></h2>
-        <div id="concurrences">
+        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toUTCString() %></small></h2>
+        <table>
+          <tr>
+            <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
+          </tr>
+          <tr>
+            <td><%= iterations[i].maxTimeRequest %>ms</td><td><%= iterations[i].minTimeRequest %>ms</td><td><%= iterations[i].avgTimeRequest %>ms</td>
+          </tr>
+        </table>
+        <button id="button-concurrence-iteration-<%= i %>" onclick="showHideConcurrences('concurrences-for-<%= i %>','button-concurrence-iteration-<%= i %>')">Show All the concurrences</button>
+        <div id="concurrences-for-<%= i %>" style="display:none;">
         <% iterations[i].results.forEach(function(result){ %>
           <p class="concurrence">
             <h3> Concurrence No. <%= result.concurrence %></h3>
             <table>
               <tr>
-                <th>Time taken to complete the request</th><th>Waiting TTFB</th>
+                <th>Time taken to complete the request</th><th>Waiting TTFB</th><th>Content Download</th>
               </tr>
               <tr>
-                <td><%= result.data.downloaded %> ms</td><td><%= result.data.firstbyte %> ms</td>
+                <td><%= result.data.downloaded %> ms</td><td><%= result.data.firstbyte %> ms</td><td><%= result.data.downloaded - result.data.firstbyte %>ms</td>
               </tr>
             </table>
           </p>
@@ -42,5 +55,16 @@
       </div>
     <% } %>
     </div>
-  </body>
-</html>
+    <script >
+      function showHideConcurrences(idDiv, idButton){
+        var div = document.getElementById(idDiv),
+            button = document.getElementById(idButton).firstChild;
+        if(div.style.display === 'none'){
+          div.style.display = 'inherit';
+          button.data='Hide All the concurrences';
+        }else{
+          div.style.display = 'none';
+          button.data='Show All the concurrences';
+        }
+      }
+    </script>

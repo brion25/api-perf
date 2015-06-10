@@ -3,7 +3,6 @@ var Requester = require('./../lib/requester'),
     writer = require('./../lib/writeReport');
 
 function Implementer(config){
-  console.log(config);
   var instance=null;
 
   return {

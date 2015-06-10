@@ -3,7 +3,6 @@ var args = require('minimist')(process.argv.slice(2)),
     readConfig = require('./../lib/readConfig');
 
 function ApiPerf(){
-  console.log(args);
   var defaults = {
         method:'GET',
         c:10,
