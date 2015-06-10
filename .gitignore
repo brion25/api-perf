@@ -17,3 +17,8 @@ build/Release
 
 # Dependency directory
 node_modules
+
+# Test files
+./api-perf-report
+./*Report.json
+test.json
