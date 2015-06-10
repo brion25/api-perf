@@ -1,9 +1,9 @@
-var args = require('yargs').argv,
+var args = require('minimist')(process.argv.slice(2)),
     Implementer = require('./implementer'),
     readConfig = require('./../lib/readConfig');
 
 function ApiPerf(){
-
+  console.log(args);
   var defaults = {
         method:'GET',
         c:10,
