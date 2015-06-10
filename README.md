@@ -12,9 +12,12 @@ Examples
 
 Using the CLI
 -------
-    $ aperf --url=http://www.google.com
+    $ aperf --url=http%3A//www.google.com
 
-If your URL has some parentheses like: 'http://www.url.com/example()?query=something', replace the parentheses for their UTF-8 versions: 'http://www.url.com/example%28%29?query=something'
+You need to escape the URL before: 'http://example.com/test()?query=string&message=hi' to 'http%3A//example.com/test%28%29%3Fquery%3Dstring%26message%3Dhi'. You can do this on your browser console:
+
+    escape('http://example.com/test()?query=string&message=hi');
+    "http%3A//example.com/test%28%29%3Fquery%3Dstring%26message%3Dhi"
 
 Using a config.js
 -------

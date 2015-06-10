@@ -13,7 +13,7 @@ function ApiPerf(){
   if(!args.url){
     config = readConfig(args);
   }else{
-    if(args.url) config.url = args.url.replace(/%28/g,'(').replace(/%29/g,')');
+    if(args.url) config.url = unescape(args.url);
     if(args.c) config.c = args.c;
     else config.c = defaults.c;
     if(args.i) config.i = args.i;
@@ -21,6 +21,7 @@ function ApiPerf(){
     if(args.method) config.method = args.method
     else config.method = defaults.method
   }
+  console.log(args);
   if(args.proxy) config.proxy = args.proxy;
 
   if(config.url.indexOf('//') < 0 ) config.url="http://"+config.url;
