@@ -1,3 +1,69 @@
+    <style>
+      *{
+        font-family:Tahoma;
+      }
+
+      table{
+        width: 100%;
+        text-align: center;
+        padding: 0.25em;
+      }
+
+      table th{
+        padding:0.25em;
+        border-bottom:1px solid;
+      }
+
+      table th:not(:last-child){
+        border-right:1px solid;
+      }
+    table td{
+      padding:0.25em;
+    }
+
+    table td:not(:last-child){
+      border-right:1px solid;
+    }
+
+    .iteration{
+      display:inline-block;
+      width:44%;
+      margin:1.5%;
+      border: 1px solid;
+      border-radius: 10px;
+      padding: 0 1% 1% 1%;
+    }
+
+    .button{
+      text-align:center;
+    }
+
+    .iteration > h2{
+      margin: 0.25em 0;
+      border-bottom: 1px dashed;
+      padding: 0.25em 0;
+    }
+
+    .iteration > h2 > small{
+      font-weight:normal;
+      font-size:0.75em;
+    }
+
+    .concurrences{
+      border-top:1px dashed;
+      margin-top:0.75em;
+    }
+
+    .concurrences > h3{
+      margin:0.5em 0;
+    }
+
+    .concurrences table th{
+      font-weight:normal;
+      width:33%;
+      padding:0.25em;
+    }
+    </style>
     <div id="main-info">
       <div id="url-info">
         <strong><%= method.toUpperCase() %> </strong>
@@ -18,13 +84,15 @@
             <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
           </tr>
           <tr>
-            <td><%= maxTimeRequest %>ms</td><td><%= minTimeRequest %>ms</td><td><%= avgTimeRequest %>ms</td>
+            <td><%= (maxTimeRequest > 1000)? Math.round(maxTimeRequest/1000 * 100)/100 + 's':maxTimeRequest+'ms' %></td><td><%= (minTimeRequest > 1000)? Math.round(minTimeRequest/1000 * 100)/100 + 's':minTimeRequest+'ms' %></td><td><%= (avgTimeRequest > 1000)? Math.round(avgTimeRequest/1000 * 100)/100 + 's':avgTimeRequest+'ms' %></td>
           </tr>
         </table>
       </p>
       </div>
     </div>
-    <button id="show-iterations-btn" onclick="showHide('iterations','show-iterations-btn','Iterations')">Show Iterations</button>
+    <div class="button">
+      <button id="show-iterations-btn" onclick="showHide('iterations','show-iterations-btn','Iterations')">Show Iterations</button>
+    </div>
     <div id="iterations" style="display:none;">
     <% for(var i=0;i<iterations.length;i++){ %>
       <div class="iteration">
@@ -34,14 +102,15 @@
             <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
           </tr>
           <tr>
-            <td><%= iterations[i].maxTimeRequest %>ms</td><td><%= iterations[i].minTimeRequest %>ms</td><td><%= iterations[i].avgTimeRequest %>ms</td>
+            <td><%= (iterations[i].maxTimeRequest > 1000)? Math.round(iterations[i].maxTimeRequest/1000 * 100)/100 + 's':iterations[i].maxTimeRequest+'ms' %></td><td><%=  (iterations[i].minTimeRequest > 1000)? Math.round(iterations[i].minTimeRequest/1000 * 100)/100 + 's':iterations[i].minTimeRequest+'ms'  %></td><td><%=  (iterations[i].avgTimeRequest > 1000)? Math.round(iterations[i].avgTimeRequest/1000 * 100)/100 + 's':iterations[i].avgTimeRequest+'ms'  %></td>
           </tr>
         </table>
-        <button id="button-concurrence-iteration-<%= i %>" onclick="showHide('concurrences-for-<%= i %>','button-concurrence-iteration-<%= i %>','All the concurrences')">Show All the concurrences</button>
-        <div id="concurrences-for-<%= i %>" style="display:none;">
+        <div class="button">
+          <button id="button-concurrence-iteration-<%= i %>" onclick="showHide('concurrences-for-<%= i %>','button-concurrence-iteration-<%= i %>','All the concurrences')">Show All the concurrences</button>
+        </div>
+        <div id="concurrences-for-<%= i %>" style="display:none;" class="concurrences">
         <% iterations[i].results.forEach(function(result){ %>
-          <p class="concurrence">
-            <h3> Concurrence No. <%= result.concurrence %></h3>
+          <h3> Concurrence No. <%= result.concurrence %></h3>
             <table>
               <tr>
                 <th>Time taken to complete the request</th><th>Waiting TTFB</th><th>Content Download</th>

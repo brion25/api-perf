@@ -21,7 +21,7 @@ function ApiPerf(){
     if(args.method) config.method = args.method
     else config.method = defaults.method
   }
-  console.log(args);
+  
   if(args.proxy) config.proxy = args.proxy;
 
   if(config.url.indexOf('//') < 0 ) config.url="http://"+config.url;
