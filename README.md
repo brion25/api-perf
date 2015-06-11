@@ -1,4 +1,4 @@
-A module to test the performance of an API or any URL
+#API-PERF
 
 Installation
 =======

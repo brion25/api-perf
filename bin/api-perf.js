@@ -1,15 +1,21 @@
 var args = require('minimist')(process.argv.slice(2)),
     Implementer = require('./implementer'),
-    readConfig = require('./../lib/readConfig');
+    readConfig = require('./../lib/readConfig'),
+    commands = require('./../lib/commands');
 
 function ApiPerf(){
-  console.log('working...');
   var defaults = {
         method:'GET',
         c:10,
         i:10
       },
       config = {};
+
+  if(args.help){
+    console.log(commands);
+    process.exit(0);
+  }
+
   if(!args.url){
     config = readConfig(args);
   }else{
@@ -21,7 +27,7 @@ function ApiPerf(){
     if(args.method) config.method = args.method
     else config.method = defaults.method
   }
-  
+
   if(args.proxy) config.proxy = args.proxy;
 
   if(config.url.indexOf('//') < 0 ) config.url="http://"+config.url;
