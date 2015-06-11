@@ -16,8 +16,8 @@
   },
   "homepage": "https://github.com/brion25/api-perf#readme",
   "dependencies": {
+    "cli-table": "^0.3.1",
     "ejs": "^2.3.1",
-    "jsonfile": "^2.0.1",
     "minimist": "^1.1.1",
     "progress": "^1.1.8"
   },
