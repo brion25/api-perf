@@ -1,4 +1,5 @@
-var Requester = require('./../lib/requester'),
+var ProgressBar = require('progress'),
+    Requester = require('./../lib/requester'),
     Persistance = require('./../lib/persistanceData'),
     writer = require('./../lib/writeReport');
 
@@ -33,7 +34,16 @@ function Implementer(config){
     options.path = config.url;
     options.method = config.method;
 
+    console.log('\n',config.method+' '+config.url,'\n');
+    this.progress = new ProgressBar('We are working [:bar] :percent :etas',{
+      complete:'=',
+      incomplete:' ',
+      width:50,
+      total: config.i
+    });
+
     this.doFirst = function(){
+      this.progress.tick();
       persistance = new Persistance();
       persistance.setMaxIteration(config.i);
       persistance.setGeneralInfo(config);
@@ -43,6 +53,7 @@ function Implementer(config){
     this.doNext = function(){
       var currentIteration = persistance.getCurrentIteration();
       if(currentIteration<=config.i){
+        this.progress.tick();
         persistance.incrementInteration();
         persistance.refreshConcurrance();
         persistance.saveResults();
