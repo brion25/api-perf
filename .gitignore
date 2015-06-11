@@ -1,4 +1,6 @@
 # Other
+.idea
+./idea
 .bowerrc
 example
 api-perf-report
