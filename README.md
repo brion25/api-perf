@@ -58,6 +58,13 @@ If you are behind a corporate proxy, you can use the command **--proxy** to add 
 
     $aperf --url=http://www.google.com --proxy=proxy:port
 
+--rname
+-------
+With **--rname** you can modify the name of the report, by default the value is something like: 'YYYYMMDD - report'
+
+    $aperf --url=http://www.google.com --rname="New Name"
+
+
 Notes
 =======
 
