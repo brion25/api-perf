@@ -1,13 +1,16 @@
 var args = require('minimist')(process.argv.slice(2)),
-    Implementer = require('./implementer'),
+    Implementer = require('./../lib/implementer'),
     readConfig = require('./../lib/readConfig'),
     commands = require('./../lib/commands');
 
 function ApiPerf(){
+  var now = new Date();
+
   var defaults = {
         method:'GET',
         c:10,
-        i:10
+        i:10,
+        rname : new Date().toISOString().split('T')[0].replace(/-/g,'')+' - report'
       },
       config = {};
 
@@ -26,6 +29,8 @@ function ApiPerf(){
     else config.i = defaults.i;
     if(args.method) config.method = args.method
     else config.method = defaults.method
+    if(args.rname) config.rname = args.rname
+    else config.rname = defaults.rname
   }
 
   if(args.proxy) config.proxy = args.proxy;

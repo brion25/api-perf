@@ -96,7 +96,7 @@
     <div id="iterations" style="display:none;">
     <% for(var i=0;i<iterations.length;i++){ %>
       <div class="iteration">
-        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toUTCString() %></small></h2>
+        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toISOString() %></small></h2>
         <table>
           <tr>
             <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
@@ -116,7 +116,11 @@
                 <th>Time taken to complete the request</th><th>Waiting TTFB</th><th>Content Download</th>
               </tr>
               <tr>
+              <% if(result.data.error){ %>
+                <td colspan = 3><%= result.data.error %></td>
+              <% }else{ %>
                 <td><%= result.data.downloaded %> ms</td><td><%= result.data.firstbyte %> ms</td><td><%= result.data.downloaded - result.data.firstbyte %>ms</td>
+              <% } %>
               </tr>
             </table>
           </p>
