@@ -1,5 +1,5 @@
 var args = require('minimist')(process.argv.slice(2)),
-    Implementer = require('./implementer'),
+    Implementer = require('./../lib/implementer'),
     readConfig = require('./../lib/readConfig'),
     commands = require('./../lib/commands');
 
