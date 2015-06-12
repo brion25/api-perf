@@ -75,5 +75,6 @@ You can create a config file just adding the commands as arguments of the object
 	    method:'GET',
 	    c:100,
 	    i:100,
-	    proxy:'proxy:port'
+	    proxy:'proxy:port',
+      rname:'New Name'
     }
