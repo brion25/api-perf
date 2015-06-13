@@ -15,7 +15,9 @@ function ApiPerf(){
       config = {};
 
   if(args.help){
-    console.log(commands);
+      for(var cmd in commands.help){
+        console.log( '\n  ' + cmd + ' ' + commands.help[cmd] + '');
+      }
     process.exit(0);
   }
 
