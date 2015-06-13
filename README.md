@@ -10,6 +10,8 @@ Installation
 Examples
 =======
 
+![Screenshot](./assets/api-perf.png "Example")
+
 Using the CLI
 -------
     $ aperf --url=http%3A//www.google.com

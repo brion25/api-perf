@@ -99,7 +99,7 @@
         <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toISOString() %></small></h2>
         <table>
           <tr>
-            <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
+            <th>Slowest Request</th> <th>Fastest Request</th> <th>Average Time</th>
           </tr>
           <tr>
             <td><%= (iterations[i].maxTimeRequest > 1000)? Math.round(iterations[i].maxTimeRequest/1000 * 100)/100 + 's':iterations[i].maxTimeRequest+'ms' %></td><td><%=  (iterations[i].minTimeRequest > 1000)? Math.round(iterations[i].minTimeRequest/1000 * 100)/100 + 's':iterations[i].minTimeRequest+'ms'  %></td><td><%=  (iterations[i].avgTimeRequest > 1000)? Math.round(iterations[i].avgTimeRequest/1000 * 100)/100 + 's':iterations[i].avgTimeRequest+'ms'  %></td>
