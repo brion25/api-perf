@@ -96,10 +96,10 @@
     <div id="iterations" style="display:none;">
     <% for(var i=0;i<iterations.length;i++){ %>
       <div class="iteration">
-        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toUTCString() %></small></h2>
+        <h2>Iteration No. <%= iterations[i].iteration %> <small> <%= new Date(iterations[i].date).toISOString() %></small></h2>
         <table>
           <tr>
-            <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
+            <th>Slowest Request</th> <th>Fastest Request</th> <th>Average Time</th>
           </tr>
           <tr>
             <td><%= (iterations[i].maxTimeRequest > 1000)? Math.round(iterations[i].maxTimeRequest/1000 * 100)/100 + 's':iterations[i].maxTimeRequest+'ms' %></td><td><%=  (iterations[i].minTimeRequest > 1000)? Math.round(iterations[i].minTimeRequest/1000 * 100)/100 + 's':iterations[i].minTimeRequest+'ms'  %></td><td><%=  (iterations[i].avgTimeRequest > 1000)? Math.round(iterations[i].avgTimeRequest/1000 * 100)/100 + 's':iterations[i].avgTimeRequest+'ms'  %></td>
@@ -116,7 +116,11 @@
                 <th>Time taken to complete the request</th><th>Waiting TTFB</th><th>Content Download</th>
               </tr>
               <tr>
+              <% if(result.data.error){ %>
+                <td colspan = 3><%= result.data.error %></td>
+              <% }else{ %>
                 <td><%= result.data.downloaded %> ms</td><td><%= result.data.firstbyte %> ms</td><td><%= result.data.downloaded - result.data.firstbyte %>ms</td>
+              <% } %>
               </tr>
             </table>
           </p>

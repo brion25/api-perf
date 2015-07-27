@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #API-PERF
+=======
+# API-PERF
+>>>>>>> 7e0978cb6228215e29030321e808f059ef8cfb90
 
 A module to test the performance of an API or any URL
 
@@ -12,6 +16,13 @@ A module to test the performance of an API or any URL
 ![alt tag](https://raw.githubusercontent.com/brion25/api-perf/master/assets/api-perf.png)
 ## Using the CLI
 
+<<<<<<< HEAD
+=======
+![Screenshot](./assets/api-perf.png "Example")
+
+Using the CLI
+-------
+>>>>>>> 7e0978cb6228215e29030321e808f059ef8cfb90
     $ aperf --url=http%3A//www.google.com
 
 You need to escape the URL before: 'http://example.com/test()?query=string&message=hi' to 'http%3A//example.com/test%28%29%3Fquery%3Dstring%26message%3Dhi'. You can do this on your browser console:
@@ -58,14 +69,24 @@ If you are behind a corporate proxy, you can use the command **--proxy** to add 
 
     $aperf --url=http://www.google.com --proxy=proxy:port
 
+<<<<<<< HEAD
 ## --rname
 
+=======
+--rname
+-------
+>>>>>>> 7e0978cb6228215e29030321e808f059ef8cfb90
 With **--rname** you can modify the name of the report, by default the value is something like: 'YYYYMMDD - report'
 
     $aperf --url=http://www.google.com --rname="New Name"
 
 
+<<<<<<< HEAD
 # Notes
+=======
+Notes
+=======
+>>>>>>> 7e0978cb6228215e29030321e808f059ef8cfb90
 
 You can create a config file just adding the commands as arguments of the object, ex:
 
@@ -75,7 +96,11 @@ You can create a config file just adding the commands as arguments of the object
 	    c:100,
 	    i:100,
 	    proxy:'proxy:port',
+<<<<<<< HEAD
         rname:'New Name'
+=======
+	    rname:'New Name'
+>>>>>>> 7e0978cb6228215e29030321e808f059ef8cfb90
     }
 
 # Updates
