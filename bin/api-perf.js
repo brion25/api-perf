@@ -36,7 +36,7 @@ function ApiPerf(){
 
   if(args.proxy) config.proxy = args.proxy;
 
-  if(!config.url instanceof Array){
+  if(!(config.url instanceof Array)){
       var temp = config.url;
       config.url = [];
       config.url.push(temp);
