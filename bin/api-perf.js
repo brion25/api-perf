@@ -1,10 +1,13 @@
-var args = require('minimist')(process.argv.slice(2)),
+var events = require('events'),
+    args = require('minimist')(process.argv.slice(2)),
     Implementer = require('./../lib/implementer'),
     readConfig = require('./../lib/readConfig'),
-    commands = require('./../lib/commands');
+    commands = require('./../lib/commands'),
+    emitter = new events.EventEmitter();
 
 function ApiPerf(){
-  var now = new Date();
+  var now = new Date(),
+      urlIterator = 0;
 
   var defaults = {
         method:'GET',
@@ -35,11 +38,25 @@ function ApiPerf(){
 
   if(args.proxy) config.proxy = args.proxy;
 
-  if(config.url.indexOf('//') < 0 ) config.url="http://"+config.url;
-  if(config.url.substring(config.url.indexOf('//') + 2).indexOf('/') < 0) config.url = config.url + '/';
+  var originalConfig = config;
 
-  var implementer = Implementer(config).getInstance();
-  implementer.doFirst();
+  if(!config.url instanceof Array){
+      originalConfig.url = [];
+      originalConfig.url.push(config.url);
+  }
+
+  emitter.on('nextUrl',function(){
+      config.url = originalConfig.url[urlIterator];
+      urlIterator++;
+      console.log(config.url);
+      if(config.url.indexOf('//') < 0 ) config.url="http://"+config.url;
+      if(config.url.substring(config.url.indexOf('//') + 2).indexOf('/') < 0) config.url = config.url + '/';
+
+      var implementer = Implementer(config).getInstance();
+      implementer.doFirst();
+  });
+
+  emitter.emit('nextUrl');
 }
 
 module.exports = ApiPerf;
