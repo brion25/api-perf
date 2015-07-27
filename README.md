@@ -80,6 +80,7 @@ You can create a config file just adding the commands as arguments of the object
 
 # Updates
 * **[07-27-2015]** Adding the feature to pass an array of URLs using the config file:
+
     module.exports = {
         url:['http://www.google.com','http://www.yahoo.com'],
         ...
