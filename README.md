@@ -9,7 +9,7 @@ Installation
 
 Examples
 =======
-
+![alt tag](https://raw.githubusercontent.com/brion25/api-perf/master/assets/api-perf.png)
 Using the CLI
 -------
     $ aperf --url=http%3A//www.google.com
