@@ -26,13 +26,13 @@ function ApiPerf(){
   }
 
   if(args.c) config.c = args.c;
-  else config.c = defaults.c;
+  else if(!config.c) config.c = defaults.c;
   if(args.i) config.i = args.i;
-  else config.i = defaults.i;
+  else if(!config.i) config.i = defaults.i;
   if(args.method) config.method = args.method
-  else config.method = defaults.method
+  else if(!config.method) config.method = defaults.method
   if(args.rname) config.rname = args.rname
-  else config.rname = defaults.rname
+  else if(!config.rname) config.rname = defaults.rname
 
   if(args.proxy) config.proxy = args.proxy;
 
