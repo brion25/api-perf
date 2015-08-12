@@ -81,7 +81,7 @@
       <p>
         <table>
           <tr>
-            <th>Slowest Request</th> <th>Fastest Request</th> <th>Avarage Time</th>
+            <th>Slowest Request</th> <th>Fastest Request</th> <th>Average Time</th>
           </tr>
           <tr>
             <td><%= (maxTimeRequest > 1000)? Math.round(maxTimeRequest/1000 * 100)/100 + 's':maxTimeRequest+'ms' %></td><td><%= (minTimeRequest > 1000)? Math.round(minTimeRequest/1000 * 100)/100 + 's':minTimeRequest+'ms' %></td><td><%= (avgTimeRequest > 1000)? Math.round(avgTimeRequest/1000 * 100)/100 + 's':avgTimeRequest+'ms' %></td>
